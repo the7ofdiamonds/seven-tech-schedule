@@ -1,0 +1,19 @@
+{
+    "name": "jamelclyons/seven-tech-schedule",
+    "authors": [
+        {
+            "name": "Jamel C. Lyons",
+            "email": "32249473+the7ofdiamonds@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.15",
+        "google/apiclient-services": "*",
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SEVEN_TECH_Schedule\\": ""
+        }
+    }
+}

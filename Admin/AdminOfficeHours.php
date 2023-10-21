@@ -19,7 +19,7 @@ class AdminOfficeHours
 
     function create_section()
     {
-        include SEVEN_TECH . 'includes/admin-add-office-hours.php';
+        include SEVEN_TECH_SCHEDULE . 'includes/admin-add-office-hours.php';
     }
 
     function register_section()

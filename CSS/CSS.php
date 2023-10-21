@@ -26,11 +26,11 @@ class CSS
     function load_front_page_css()
     {
         if (is_front_page()) {
-            $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css';
+            $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css';
 
             if ($filePath) {
-                wp_register_style('seven_tech_css',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css', array(), false, 'all');
-                wp_enqueue_style('seven_tech_css');
+                wp_register_style('seven_tech_schedule',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css', array(), false, 'all');
+                wp_enqueue_style('seven_tech_schedule');
             } else {
                 error_log('CSS file is missing at :' . $filePath);
             }
@@ -41,11 +41,11 @@ class CSS
     {
         foreach ($this->page_titles as $page) {
             if (is_page($page)) {
-                $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css';
+                $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css';
 
                 if ($filePath) {
-                    wp_register_style('seven_tech_css',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css', array(), false, 'all');
-                    wp_enqueue_style('seven_tech_css');
+                    wp_register_style('seven_tech_schedule',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css', array(), false, 'all');
+                    wp_enqueue_style('seven_tech_schedule');
                 } else {
                     error_log('CSS file is missing at :' . $filePath);
                 }
@@ -57,11 +57,11 @@ class CSS
     {
         foreach ($this->post_types as $post_type) {
             if (is_post_type_archive($post_type) || is_singular($post_type)) {
-                $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css';
+                $filePath = SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css';
 
                 if ($filePath) {
-                    wp_register_style('seven_tech_css',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech.css', array(), false, 'all');
-                    wp_enqueue_style('seven_tech_css');
+                    wp_register_style('seven_tech_schedule',  SEVEN_TECH_SCHEDULE_URL . 'CSS/seven-tech-schedule.css', array(), false, 'all');
+                    wp_enqueue_style('seven_tech_schedule');
                 } else {
                     error_log('CSS file is missing at :' . $filePath);
                 }

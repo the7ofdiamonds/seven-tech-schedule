@@ -1,11 +1,11 @@
 <?php
 
-namespace SEVEN_TECH\API\Google;
+namespace SEVEN_TECH_Schedule\API\Google;
 
-use SEVEN_TECH\API\Google\GoogleCalendar;
-use SEVEN_TECH\API\Calendar;
-use SEVEN_TECH\API\Event;
-use SEVEN_TECH\API\Schedule;
+use SEVEN_TECH_Schedule\API\Google\GoogleCalendar;
+use SEVEN_TECH_Schedule\API\Calendar;
+use SEVEN_TECH_Schedule\API\Event;
+use SEVEN_TECH_Schedule\API\Schedule;
 
 use Google\Client;
 use Google\Service\Calendar as GCalendar;

@@ -21,8 +21,8 @@ Licensing Info is needed
 */
 
 defined('ABSPATH') or die('Hey, what are you doing here? You silly human!');
-define('SEVEN_TECH_SCHEDULE', WP_PLUGIN_DIR . '/seven-tech/');
-define('SEVEN_TECH_SCHEDULE_URL', WP_PLUGIN_URL . '/seven-tech/');
+define('SEVEN_TECH_SCHEDULE', WP_PLUGIN_DIR . '/seven-tech-schedule/');
+define('SEVEN_TECH_SCHEDULE_URL', WP_PLUGIN_URL . '/seven-tech-schedule/');
 
 require_once SEVEN_TECH_SCHEDULE . 'vendor/autoload.php';
 
@@ -78,7 +78,6 @@ register_activation_hook(__FILE__, array($seven_tech, 'activate'));
 
 $seven_tech_pages = new Pages();
 register_activation_hook(__FILE__, array($seven_tech_pages, 'add_pages'));
-register_activation_hook(__FILE__, [$seven_tech_pages, 'add_founder_subpages']);
 
 // register_deactivation_hook(__FILE__, array($thfw_users, 'deactivate'));
 

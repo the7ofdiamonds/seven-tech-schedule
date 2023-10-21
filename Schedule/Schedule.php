@@ -1,11 +1,11 @@
 <?php
 
-namespace SEVEN_TECH\Schedule;
+namespace SEVEN_TECH_Schedule\Schedule;
 
 use Exception;
 use DateTime;
 
-use SEVEN_TECH\API\Google\GoogleCalendar;
+use SEVEN_TECH_Schedule\API\Google\GoogleCalendar;
 
 use Google\Service\Calendar;
 

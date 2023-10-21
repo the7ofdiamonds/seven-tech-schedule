@@ -2,13 +2,13 @@
 
 namespace SEVEN_TECH_Schedule\API;
 
-use SEVEN_TECH\API\Google\Google;
+use SEVEN_TECH_Schedule\API\Google\Google;
 
 class API
 {
   function __construct()
   {
-    $credentialsPath = SEVEN_TECH . 'serviceAccount.json';
+    $credentialsPath = SEVEN_TECH_SCHEDULE . 'serviceAccount.json';
 
     if (file_exists($credentialsPath)) {
       $jsonFileContents = file_get_contents($credentialsPath);
@@ -24,7 +24,7 @@ class API
             isset($decodedData['private_key']) &&
             isset($decodedData['client_email'])
           ) {
-            $credentialsPath = SEVEN_TECH . 'serviceAccount.json';
+            $credentialsPath = SEVEN_TECH_SCHEDULE . 'serviceAccount.json';
           } else {
             error_log('This is not a valid service account JSON');
             $credentialsPath = null;

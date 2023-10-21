@@ -1,12 +1,12 @@
 <?php
 
-namespace SEVEN_TECH\API;
+namespace SEVEN_TECH_Schedule\API;
 
 use Exception;
 use WP_REST_Request;
 
-use SEVEN_TECH\API\Google\GoogleCalendar;
-use SEVEN_TECH\Schedule\Schedule;
+use SEVEN_TECH_Schedule\API\Google\GoogleCalendar;
+use SEVEN_TECH_Schedule\Schedule\Schedule;
 
 use Google\Service\Calendar\CalendarListEntry;
 

@@ -43,7 +43,6 @@ class API
     }
 
     if ($credentialsPath !== null) {
-
       new Google($credentialsPath);
     } else {
       error_log('A path to the Google Service Account file is required.');

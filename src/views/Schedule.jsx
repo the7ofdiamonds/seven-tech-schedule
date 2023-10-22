@@ -289,6 +289,8 @@ function ScheduleComponent() {
   return (
     <>
       <section className="schedule">
+        <h2 className="title">schedule</h2>
+
         {officeHours && officeHours.length > 0 ? (
           <div className="office-hours-card card">
             <table>

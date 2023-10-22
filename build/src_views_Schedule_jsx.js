@@ -247,7 +247,9 @@ function ScheduleComponent() {
   }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: "schedule"
-  }, officeHours && officeHours.length > 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "title"
+  }, "schedule"), officeHours && officeHours.length > 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "office-hours-card card"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "SUN"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "MON"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "TUE"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "WED"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "THU"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "FRI"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, "SAT"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, officeHours.map(hours => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
     key: hours.day

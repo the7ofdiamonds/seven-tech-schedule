@@ -6,13 +6,18 @@ use WP_Query;
 
 class Pages
 {
+    public $front_page_react;
     public $page_titles;
-    public $post_types;
 
     public function __construct()
     {
+        $this->front_page_react = [
+            'schedule',
+        ];
+
         $this->page_titles = [
-            
+            'schedule',
+            'event'
         ];
 
         add_action('init', [$this, 'react_rewrite_rules']);
@@ -27,10 +32,38 @@ class Pages
 
             if (!$page_exists) {
                 $page_data = array(
-                    'post_title'   => $page_title,
+                    'post_title'   => strtoupper($page_title),
                     'post_type'    => 'page',
                     'post_content' => '',
                     'post_status'  => 'publish',
+                );
+
+                wp_insert_post($page_data);
+            }
+        }
+    }
+
+    public function add_founder_subpages()
+    {
+        global $wpdb;
+
+        $pages = [
+            [
+                'title' => 'FOUNDER RESUME',
+                'name' => 'resume'
+            ]
+        ];
+
+        foreach ($pages as $page) {
+            $page_exists = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = 'page'", $page['name']));
+
+            if (!$page_exists) {
+                $page_data = array(
+                    'post_title'   => $page['title'],
+                    'post_type'    => 'page',
+                    'post_content' => '',
+                    'post_status'  => 'publish',
+                    'post_name' => $page['name']
                 );
 
                 wp_insert_post($page_data);
@@ -52,6 +85,10 @@ class Pages
                 $query->the_post();
                 add_rewrite_rule('^' . $query->post->post_name, 'index.php?page_id=' . $query->post->ID, 'top');
             }
+
+            $resume_id = get_page_by_path('resume')->ID;
+
+            add_rewrite_rule('^founders/([^/]+)/resume/?$', 'index.php?page_id=' . $resume_id, 'top');
 
             wp_reset_postdata();
         }

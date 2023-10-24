@@ -2,29 +2,35 @@
 
 namespace SEVEN_TECH_Schedule\Templates;
 
+use SEVEN_TECH_Schedule\CSS\CSS;
+use SEVEN_TECH_Schedule\JS\JS;
+
+use SEVEN_TECH_Schedule\Templates\Templates_Post_Types;
+
 class Templates
 {
+    private $css_file;
+    private $js_file;
+
     public function __construct()
     {
-        add_filter('archive_template', [$this, 'get_schedule_archive_template']);
-        add_filter('single_template', [$this, 'get_schedule_single_template']);
+        add_filter('frontpage_template', [$this, 'get_custom_front_page']);
+
+        $this->css_file = new CSS;
+        $this->js_file = new JS;
+
+        new Templates_Post_Types;
     }
 
-    function get_schedule_archive_template($archive_template)
+    function get_custom_front_page($frontpage_template)
     {
-        if (is_post_type_archive('schedule')) {
-            $archive_template = SEVEN_TECH_SCHEDULE . 'Post_Types/Schedule/archive-schedule.php';
+        if (is_front_page()) {
+                add_action('wp_head', [$this->css_file, 'load_front_page_css']);
+                add_action('wp_footer', [$this->js_file, 'load_front_page_react']);
+
         }
 
-        return $archive_template;
+        return $frontpage_template;
     }
 
-    function get_schedule_single_template($singular_template)
-    {
-        if (is_singular('schedule')) {
-            $singular_template = SEVEN_TECH_SCHEDULE . 'Post_Types/Schedule/single-schedule.php';
-        }
-
-        return $singular_template;
-    }
 }

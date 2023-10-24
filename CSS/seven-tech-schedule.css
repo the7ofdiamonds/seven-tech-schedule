@@ -64,4 +64,22 @@
   gap: 0.5rem;
 }
 
+.office-hours-card.card {
+  padding: 0;
+}
+.office-hours-card.card table {
+  border-spacing: 0.375em;
+  border-collapse: collapse;
+}
+.office-hours-card.card table thead {
+  background-color: black;
+  color: white;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
 /*# sourceMappingURL=seven-tech-schedule.css.map */

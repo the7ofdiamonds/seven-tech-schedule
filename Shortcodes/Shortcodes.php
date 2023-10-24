@@ -14,3 +14,5 @@ class Shortcodes
         include SEVEN_TECH_SCHEDULE . 'includes/react.php';
     }
 }
+
+// Office Hours

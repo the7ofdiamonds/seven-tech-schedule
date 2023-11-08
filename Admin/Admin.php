@@ -1,6 +1,6 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Admin;
+namespace SEVEN_TECH\Schedule\Admin;
 
 
 class Admin
@@ -12,11 +12,11 @@ class Admin
 
     public function __construct()
     {
-        // add_action('admin_menu', [$this, 'register_custom_menu_page']);
+        add_action('admin_menu', [$this, 'register_custom_menu_page']);
 
         // add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
 
-        // new AdminOfficeHours;
+        new AdminOfficeHours;
     }
 
     function register_custom_menu_page(){

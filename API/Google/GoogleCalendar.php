@@ -1,6 +1,6 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\API\Google;
+namespace SEVEN_TECH\Schedule\API\Google;
 
 use Exception;
 

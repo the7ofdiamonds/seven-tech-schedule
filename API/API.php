@@ -1,8 +1,8 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\API;
+namespace SEVEN_TECH\Schedule\API;
 
-use SEVEN_TECH_Schedule\API\Google\Google;
+use SEVEN_TECH\Schedule\API\Google\Google;
 
 class API
 {

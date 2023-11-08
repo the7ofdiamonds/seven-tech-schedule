@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SEVEN_TECH_Schedule\\": ""
+            "SEVEN_TECH\\Schedule\\": ""
         }
     }
 }

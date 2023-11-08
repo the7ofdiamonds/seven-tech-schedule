@@ -1,12 +1,14 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Pages;
+namespace SEVEN_TECH\Schedule\Pages;
 
 use WP_Query;
 
 class Pages
 {
     public $front_page_react;
+    public $pages;
+    public $protected_pages;
     public $page_titles;
 
     public function __construct()
@@ -15,82 +17,55 @@ class Pages
             'schedule',
         ];
 
+        $this->pages = [];
+
+        $this->protected_pages = [];
+
         $this->page_titles = [
-            'schedule',
-            'event'
+            ...$this->pages,
+            ...$this->protected_pages
         ];
 
         add_action('init', [$this, 'react_rewrite_rules']);
+
+        add_filter('query_vars', [$this, 'add_query_vars']);
+
+        add_action('init', [$this, 'is_user_logged_in']);
     }
 
-    public function add_pages()
+    function react_rewrite_rules()
     {
-        global $wpdb;
+        if (isset($this->page_titles) && is_array($this->page_titles) && count($this->page_titles) > 0) {
 
-        foreach ($this->page_titles as $page_title) {
-            $page_exists = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type = 'page'", $page_title));
+            foreach ($this->page_titles as $page_title) {
+                $url = explode('/', $page_title);
+                $segment = count($url) - 1;
 
-            if (!$page_exists) {
-                $page_data = array(
-                    'post_title'   => strtoupper($page_title),
-                    'post_type'    => 'page',
-                    'post_content' => '',
-                    'post_status'  => 'publish',
-                );
-
-                wp_insert_post($page_data);
+                if (isset($url[$segment])) {
+                    add_rewrite_rule('^' . $page_title, 'index.php?' . $url[$segment] . '=$1', 'top');
+                }
             }
         }
     }
 
-    public function add_founder_subpages()
+    function add_query_vars($query_vars)
     {
-        global $wpdb;
+        if (!empty($this->page_titles) && is_array($this->page_titles) && count($this->page_titles) > 0) {
 
-        $pages = [
-            [
-                'title' => 'FOUNDER RESUME',
-                'name' => 'resume'
-            ]
-        ];
-
-        foreach ($pages as $page) {
-            $page_exists = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = 'page'", $page['name']));
-
-            if (!$page_exists) {
-                $page_data = array(
-                    'post_title'   => $page['title'],
-                    'post_type'    => 'page',
-                    'post_content' => '',
-                    'post_status'  => 'publish',
-                    'post_name' => $page['name']
-                );
-
-                wp_insert_post($page_data);
+            foreach ($this->page_titles as $page_title) {
+                $url = explode('/', $page_title);
+                $segment = count($url) - 1;
+                $query_vars[] = $url[$segment];
             }
+
+            return $query_vars;
         }
+
+        return $query_vars;
     }
 
-    public function react_rewrite_rules()
+    function is_user_logged_in()
     {
-        foreach ($this->page_titles as $page_title) {
-            $args = array(
-                'post_type' => 'page',
-                'post_title' => $page_title,
-                'posts_per_page' => 1
-            );
-            $query = new WP_Query($args);
-
-            if ($query->have_posts()) {
-                $query->the_post();
-                add_rewrite_rule('^' . $query->post->post_name, 'index.php?page_id=' . $query->post->ID, 'top');
-            }
-
-            $resume_id = get_page_by_path('resume')->ID;
-
-            add_rewrite_rule('^founders/([^/]+)/resume/?$', 'index.php?page_id=' . $resume_id, 'top');
-
-            wp_reset_postdata();
-        }
+        return isset($_SESSION['idToken']);
     }
 }

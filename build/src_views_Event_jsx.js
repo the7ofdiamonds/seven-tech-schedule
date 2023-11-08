@@ -13,7 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Event() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Event");
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: "event"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, " Event")));
 }
 /* harmony default export */ __webpack_exports__["default"] = (Event);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Admin;
+namespace SEVEN_TECH\Schedule\Admin;
 
 class AdminOfficeHours
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Database;
+namespace SEVEN_TECH\Schedule\Database;
 
 class Database
 {

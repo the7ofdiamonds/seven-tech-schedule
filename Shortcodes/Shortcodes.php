@@ -1,6 +1,6 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Shortcodes;
+namespace SEVEN_TECH\Schedule\Shortcodes;
 
 class Shortcodes
 {

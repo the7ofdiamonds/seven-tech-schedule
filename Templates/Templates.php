@@ -1,11 +1,9 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\Templates;
+namespace SEVEN_TECH\Schedule\Templates;
 
-use SEVEN_TECH_Schedule\CSS\CSS;
-use SEVEN_TECH_Schedule\JS\JS;
-
-use SEVEN_TECH_Schedule\Templates\Templates_Post_Types;
+use SEVEN_TECH\Schedule\CSS\CSS;
+use SEVEN_TECH\Schedule\JS\JS;
 
 class Templates
 {
@@ -25,12 +23,10 @@ class Templates
     function get_custom_front_page($frontpage_template)
     {
         if (is_front_page()) {
-                add_action('wp_head', [$this->css_file, 'load_front_page_css']);
-                add_action('wp_footer', [$this->js_file, 'load_front_page_react']);
-
+            add_action('wp_head', [$this->css_file, 'load_front_page_css']);
+            add_action('wp_footer', [$this->js_file, 'load_front_page_react']);
         }
 
         return $frontpage_template;
     }
-
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace SEVEN_TECH_Schedule\API;
+namespace SEVEN_TECH\Schedule\API;
 
 use Exception;
 
 use WP_REST_Request;
 
-use SEVEN_TECH_Schedule\API\Google\GoogleCalendar;
-use SEVEN_TECH_Schedule\Schedule\Schedule as ORB_Schedule;
+use SEVEN_TECH\Schedule\API\Google\GoogleCalendar;
+use SEVEN_TECH\Schedule\Schedule\Schedule as ORB_Schedule;
 
 use Google\Service\Calendar\Calendar;
 use Google\Service\Calendar\FreeBusyRequest;

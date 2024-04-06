@@ -2,66 +2,71 @@
 
 namespace SEVEN_TECH\Schedule\Pages;
 
-use WP_Query;
-
 class Pages
 {
     public $front_page_react;
+    public $custom_pages_list;
+    public $protected_pages_list;
+    public $pages_list;
     public $pages;
-    public $protected_pages;
     public $page_titles;
 
     public function __construct()
     {
         $this->front_page_react = [
-            'schedule',
+            'Schedule',
+        ];
+
+        $this->custom_pages_list = [
+            [
+                'file_name' => 'Schedule',
+                'url' => 'about',
+                'regex' => '#^/about#',
+                'name' => 'schedule'
+            ],
+            [
+                'file_name' => 'Schedule',
+                'url' => 'schedule',
+                'regex' => '#^/schedule#',
+                'name' => 'schedule'
+            ]
+        ];
+
+        $this->protected_pages_list = [];
+
+        $this->pages_list = [];
+
+        $this->page_titles = [
+            ...$this->custom_pages_list,
+            ...$this->protected_pages_list,
+            ...$this->pages_list,
         ];
 
         $this->pages = [];
-
-        $this->protected_pages = [];
-
-        $this->page_titles = [
-            ...$this->pages,
-            ...$this->protected_pages
-        ];
-
-        add_action('init', [$this, 'react_rewrite_rules']);
-
-        add_filter('query_vars', [$this, 'add_query_vars']);
-
-        add_action('init', [$this, 'is_user_logged_in']);
     }
 
-    function react_rewrite_rules()
+    function add_pages()
     {
-        if (isset($this->page_titles) && is_array($this->page_titles) && count($this->page_titles) > 0) {
+        global $wpdb;
 
-            foreach ($this->page_titles as $page_title) {
-                $url = explode('/', $page_title);
-                $segment = count($url) - 1;
+        foreach ($this->pages as $page) {
+            if (!empty($page['title'])) {
+                $page_exists = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type = 'page'", $page['title']));
 
-                if (isset($url[$segment])) {
-                    add_rewrite_rule('^' . $page_title, 'index.php?' . $url[$segment] . '=$1', 'top');
+                if (!$page_exists) {
+                    $page_data = array(
+                        'post_title'   => $page['title'],
+                        'post_type'    => 'page',
+                        'post_content' => '',
+                        'post_status'  => 'publish',
+                    );
+
+                    wp_insert_post($page_data);
+
+                    error_log($page['title'] . ' page added.');
                 }
             }
         }
-    }
-
-    function add_query_vars($query_vars)
-    {
-        if (!empty($this->page_titles) && is_array($this->page_titles) && count($this->page_titles) > 0) {
-
-            foreach ($this->page_titles as $page_title) {
-                $url = explode('/', $page_title);
-                $segment = count($url) - 1;
-                $query_vars[] = $url[$segment];
-            }
-
-            return $query_vars;
-        }
-
-        return $query_vars;
     }
 
     function is_user_logged_in()

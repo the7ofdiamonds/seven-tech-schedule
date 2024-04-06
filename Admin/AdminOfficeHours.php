@@ -7,24 +7,23 @@ class AdminOfficeHours
 
     public function __construct()
     {
-        add_action('admin_menu', [$this, 'register_custom_submenu_page']);
     }
 
     function register_custom_submenu_page()
     {
 
-        add_submenu_page('seven_tech_admin', 'Add Office Hours', 'Add Hours', 'manage_options', 'seven_tech_office_hours', [$this, 'create_section'], 2);
+        add_submenu_page('seven-tech-schedule', 'Add Office Hours', 'Add Hours', 'manage_options', 'seven-tech-schedule', [$this, 'create_section'], 2);
         add_action('admin_init', [$this, 'register_section']);
     }
 
     function create_section()
     {
-        include SEVEN_TECH_SCHEDULE . 'includes/admin-add-office-hours.php';
+        include_once SEVEN_TECH_SCHEDULE . 'Admin/includes/admin-add-office-hours.php';
     }
 
     function register_section()
     {
-        add_settings_section('orb-admin-office-hours', '', [$this, 'section_description'], 'orb_office_hours');
+        add_settings_section('orb-admin-office-hours', '', [$this, 'section_description'], 'seven-tech-schedule');
         register_setting('orb-admin-office-hours-group', 'orb_office_hours');
         register_setting('orb-admin-office-hours-group', 'orb_calendar_id');
         register_setting('orb-admin-office-hours-group', 'orb_event_max_results');
@@ -32,12 +31,12 @@ class AdminOfficeHours
         register_setting('orb-admin-office-hours-group', 'orb_event_duration_hours');
         register_setting('orb-admin-office-hours-group', 'orb_event_duration_minutes');
         register_setting('orb-admin-office-hours-group', 'orb_event_time_zone');
-        add_settings_field('orb_office_hours', '', [$this, 'office_hours'], 'orb_office_hours', 'orb-admin-office-hours');
-        add_settings_field('orb_calendar_id', 'Add Calendar ID', [$this, 'calendar_id'], 'orb_office_hours', 'orb-admin-office-hours');
-        add_settings_field('orb_event_max_results', 'Set Max Results', [$this, 'max_results'], 'orb_office_hours', 'orb-admin-office-hours');
-        add_settings_field('orb_event_summary', 'Add Title of Event', [$this, 'event_summary'], 'orb_office_hours', 'orb-admin-office-hours');
-        add_settings_field('orb_event_duration_hours', 'Add Event Duration', [$this, 'event_duration'], 'orb_office_hours', 'orb-admin-office-hours');
-        add_settings_field('orb_event_time_zone', 'Add Event Time Zone', [$this, 'event_time_zone'], 'orb_office_hours', 'orb-admin-office-hours');
+        add_settings_field('orb_office_hours', '', [$this, 'office_hours'], 'seven-tech-schedule', 'orb-admin-office-hours');
+        add_settings_field('orb_calendar_id', 'Add Calendar ID', [$this, 'calendar_id'], 'seven-tech-schedule', 'orb-admin-office-hours');
+        add_settings_field('orb_event_max_results', 'Set Max Results', [$this, 'max_results'], 'seven-tech-schedule', 'orb-admin-office-hours');
+        add_settings_field('orb_event_summary', 'Add Title of Event', [$this, 'event_summary'], 'seven-tech-schedule', 'orb-admin-office-hours');
+        add_settings_field('orb_event_duration_hours', 'Add Event Duration', [$this, 'event_duration'], 'seven-tech-schedule', 'orb-admin-office-hours');
+        add_settings_field('orb_event_time_zone', 'Add Event Time Zone', [$this, 'event_time_zone'], 'seven-tech-schedule', 'orb-admin-office-hours');
     }
 
     function section_description()

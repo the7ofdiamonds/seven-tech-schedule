@@ -245,9 +245,7 @@ function ScheduleComponent() {
   if (loading) {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Loading...");
   }
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
-    className: "schedule"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "title"
   }, "schedule"), officeHours && officeHours.length > 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "office-hours-card card"
@@ -301,38 +299,11 @@ function ScheduleComponent() {
   }, communication_preferences.map((communication, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
     key: index,
     value: communication.type
-  }, communication.type)))) : '', attendees && attendees.length > 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "attendees-select card"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "attendees"
-  }, "Attendees"), attendees.map((attendee, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "attendee"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
-    key: index
-  }, attendee), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "remove-attendee",
-    onClick: handleRemoveAttendee
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "-")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: handleAddAttendee
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "+"))))) : '', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `additional-attendee card ${showAdditionalAttendee ? 'view' : ''}`,
-    id: "additional_attendee"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "attendees"
-  }, "Additional Attendee"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "attendee"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "email",
-    value: additionalAttendeeEmail,
-    onChange: event => setAdditionalAttendeeEmail(event.target.value)
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "add-attendee",
-    onClick: handleAttendeeChange
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "+")))), message ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, communication.type)))) : '', message ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `status-bar card ${messageType}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, message)) : '', user_email ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: handleClick
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "SCHEDULE")) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_NavigationLogin__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "SCHEDULE")) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_NavigationLogin__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 }
 /* harmony default export */ __webpack_exports__["default"] = (ScheduleComponent);
 

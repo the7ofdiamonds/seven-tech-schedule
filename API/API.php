@@ -4,6 +4,9 @@ namespace SEVEN_TECH\Schedule\API;
 
 use SEVEN_TECH\Schedule\API\Google\Google;
 
+use Google\Client;
+use Google\Service\Calendar as GCalendar;
+
 class API
 {
   function __construct()
@@ -43,9 +46,33 @@ class API
     }
 
     if ($credentialsPath !== null) {
+      $client = new Client();
+      $client->setApplicationName('Your Application Name');
+      $client->setScopes(GCalendar::CALENDAR_EVENTS);
+      $client->setAuthConfig($credentialsPath);
+      $client->setScopes('https://www.googleapis.com/auth/calendar');
       new Google($credentialsPath);
+      $schedule = new Schedule($client);
     } else {
       error_log('A path to the Google Service Account file is required.');
     }
+
+    register_rest_route('seven-tech/v1', '/schedule/office-hours', array(
+      'methods' => 'GET',
+      'callback' => array($schedule, 'get_office_hours'),
+      'permission_callback' => '__return_true',
+    ));
+
+    register_rest_route('seven-tech/v1', '/schedule/available-times', array(
+      'methods' => 'GET',
+      'callback' => array($schedule, 'get_available_times'),
+      'permission_callback' => '__return_true',
+    ));
+
+    register_rest_route('seven-tech/v1', '/schedule/communication', array(
+      'methods' => 'GET',
+      'callback' => array($schedule, 'get_communication_preferences'),
+      'permission_callback' => '__return_true',
+    ));
   }
 }

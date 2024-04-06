@@ -27,7 +27,7 @@ export const getOfficeHours = createAsyncThunk('schedule/getOfficeHours',
   async () => {
 
     try {
-      const response = await fetch('/wp-json/orb/v1/schedule/office-hours', {
+      const response = await fetch('/wp-json/seven-tech/v1/schedule/office-hours', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export const getAvailableTimes = createAsyncThunk('schedule/getAvailableTimes',
   async () => {
 
     try {
-      const response = await fetch('/wp-json/orb/v1/schedule/available-times', {
+      const response = await fetch('/wp-json/seven-tech/v1/schedule/available-times', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

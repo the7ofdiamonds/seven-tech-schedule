@@ -13,21 +13,21 @@ class Admin
     public function __construct()
     {
         add_action('admin_menu', [$this, 'register_custom_menu_page']);
+        add_action('admin_menu', [new AdminOfficeHours, 'register_custom_submenu_page']);
 
         // add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
-
-        new AdminOfficeHours;
     }
 
-    function register_custom_menu_page(){
+    function register_custom_menu_page()
+    {
         add_menu_page(
-            'SEVEN TECH',
-            'SEVEN TECH',
+            'SEVEN TECH SCHEDULE',
+            'SCHEDULE',
             'manage_options',
-            'seven_tech_admin',
+            'seven-tech-schedule',
             '',
             'dashicons-info',
-            3
+            103
         );
     }
 }

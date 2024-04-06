@@ -26,30 +26,6 @@ class Schedule
 
     public function __construct($client)
     {
-        add_action('rest_api_init', function () {
-            register_rest_route('orb/v1', '/schedule/office-hours', array(
-                'methods' => 'GET',
-                'callback' => array($this, 'get_office_hours'),
-                'permission_callback' => '__return_true',
-            ));
-        });
-
-        add_action('rest_api_init', function () {
-            register_rest_route('orb/v1', '/schedule/available-times', array(
-                'methods' => 'GET',
-                'callback' => array($this, 'get_available_times'),
-                'permission_callback' => '__return_true',
-            ));
-        });
-
-        add_action('rest_api_init', function () {
-            register_rest_route('orb/v1', '/schedule/communication', array(
-                'methods' => 'GET',
-                'callback' => array($this, 'get_communication_preferences'),
-                'permission_callback' => '__return_true',
-            ));
-        });
-
         $this->schedule = new ORB_Schedule($client);
         $this->timeZone = $this->schedule->timeZone;
         $this->calendar_id = $this->schedule->calendar_id;

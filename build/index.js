@@ -6284,8 +6284,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Schedule = (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_views_Schedule_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Schedule */ "./src/views/Schedule.jsx")));
-const Event = (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_views_Event_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Event */ "./src/views/Event.jsx")));
+const Schedule = (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_views_Schedule_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Schedule.jsx */ "./src/views/Schedule.jsx")));
+const Event = (0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_views_Event_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Event.jsx */ "./src/views/Event.jsx")));
 function App() {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_redux__WEBPACK_IMPORTED_MODULE_1__.Provider, {
     store: _model_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -6293,6 +6293,9 @@ function App() {
     fallback: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_loading_LoadingComponent__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
     path: "/",
+    element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Schedule, null)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    path: "/about",
     element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Schedule, null)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
     path: "/schedule",
@@ -16353,7 +16356,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const sevenTechSchedule = document.getElementById('seven_tech_schedule');
 if (sevenTechSchedule) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default().render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), sevenTechSchedule);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default().createRoot(sevenTechSchedule).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 }
 }();
 /******/ })()

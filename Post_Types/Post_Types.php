@@ -12,7 +12,7 @@ class Post_Types
             [
                 'name' => 'schedule',
                 'menu_icon' => '',
-                'menu_position' => 11,
+                'menu_position' => 13,
                 'title' => 'SCHEDULE',
                 'singular' => 'Event',
                 'plural' => 'Schedule',

@@ -1,0 +1,30 @@
+{
+  "src/index.jsx": {
+    "file": "index.js",
+    "name": "index",
+    "src": "src/index.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/views/Schedule.jsx",
+      "src/views/Event.jsx"
+    ]
+  },
+  "src/views/Event.jsx": {
+    "file": "Event.js",
+    "name": "Event",
+    "src": "src/views/Event.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/index.jsx"
+    ]
+  },
+  "src/views/Schedule.jsx": {
+    "file": "Schedule.js",
+    "name": "Schedule",
+    "src": "src/views/Schedule.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/index.jsx"
+    ]
+  }
+}

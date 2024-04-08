@@ -100,6 +100,15 @@ class SEVEN_TECH_Schedule
         //     (new Shadow)->seven_tech_shadow_section($wp_customize);
         //     (new SocialBar)->seven_tech_social_bar_section($wp_customize);
         // });
+
+        $this->router = new Router(
+            $pages,
+            $posttypes,
+            $taxonomies,
+            $templates,
+            $templates_custom
+        );
+        $this->pages = new Pages;
     }
 
     function activate()

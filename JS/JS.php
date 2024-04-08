@@ -77,15 +77,15 @@ class JS
             $this->load_react_index();
 
             if (!empty($page) && is_array($page)) {
-                $filePath = $this->buildDir . $page['file_name'] . '.js';
-                $filePathURL = $this->buildDirURL . $page['file_name'] . '.js';
+                $filePath = $this->buildDir . $page . '.js';
+                $filePathURL = $this->buildDirURL . $page . '.js';
 
                 wp_enqueue_script('wp-element', $this->includes_url . 'js/dist/element.min.js', [], null, true);
 
                 if (file_exists($filePath)) {
                     echo '<script type="module" src="' . esc_url($filePathURL) . '"></script>';
                 } else {
-                    throw new Exception($page['file_name'] . ' page has not been created in react JSX.');
+                    throw new Exception($page . ' page has not been created in react JSX.');
                 }
             }
         } catch (Exception $e) {

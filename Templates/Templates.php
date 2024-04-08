@@ -20,16 +20,17 @@ class Templates
         $this->pluginDir = SEVEN_TECH_SCHEDULE;
     }
 
-    function get_front_page_template($frontpage_template, $section)
+    function get_front_page_template($frontpage_template, $sections)
     {
         if (is_front_page()) {
-            
-            add_action('wp_head', function () use ($section) {
-                $this->css->load_front_page_css($section);
-            });
-            add_action('wp_footer', function () use ($section) {
-                $this->js->load_front_page_react($section);
-            });
+            foreach ($sections as $section) {
+                add_action('wp_head', function () use ($section) {
+                    $this->css->load_front_page_css($section);
+                });
+                add_action('wp_footer', function () use ($section) {
+                    $this->js->load_front_page_react($section);
+                });
+            }
 
             return $frontpage_template;
         }

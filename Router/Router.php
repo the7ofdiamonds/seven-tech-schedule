@@ -51,12 +51,11 @@ class Router
             if (preg_match('#^/$|^/index\.php(?:\?|$)#', $path)) {
 
                 if (!empty($this->front_page_react)) {
-                    foreach ($this->front_page_react as $section) {
+                    $sections = $this->front_page_react;
 
-                        add_filter('frontpage_template', function ($frontpage_template) use ($section) {
-                            return $this->templates->get_front_page_template($frontpage_template, $section);
-                        });
-                    }
+                    add_filter('frontpage_template', function ($frontpage_template) use ($sections) {
+                        return $this->templates->get_front_page_template($frontpage_template, $sections);
+                    });
                 }
             }
 
@@ -86,8 +85,8 @@ class Router
                 foreach ($this->pages as $page) {
                     if (preg_match($page['regex'], $path)) {
 
-                        add_filter('template_include', function ($template_include) use ($protected_page) {
-                            return $this->templates->get_page_template($template_include, $protected_page);
+                        add_filter('template_include', function ($template_include) use ($page) {
+                            return $this->templates->get_page_template($template_include, $page);
                         });
                     }
                 }
@@ -97,8 +96,8 @@ class Router
                 foreach ($this->pages_list as $page) {
                     if (preg_match($page['regex'], $path)) {
 
-                        add_filter('template_include', function ($template_include) use ($protected_page) {
-                            return $this->templates->get_page_list_template($template_include, $protected_page);
+                        add_filter('template_include', function ($template_include) use ($page) {
+                            return $this->templates->get_page_list_template($template_include, $page);
                         });
                     }
                 }

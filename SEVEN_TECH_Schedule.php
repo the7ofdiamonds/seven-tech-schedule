@@ -67,36 +67,31 @@ class SEVEN_TECH_Schedule
             new API();
         });
 
-        $css = new CSS;
-        $js = new JS;
-        $this->pages = new Pages;
-        $templates_custom = new TemplatesCustom;
+        $pages = new Pages;
         $posttypes = new Post_Types;
         $taxonomies = new Taxonomies;
+        $css = new CSS;
+        $js = new JS;
+        $templates = new Templates(
+            $css,
+            $js,
+        );
+        $templates_custom = new TemplatesCustom;
+        $router = new Router(
+            $pages,
+            $posttypes,
+            $taxonomies,
+            $templates,
+            $templates_custom
+        );
 
-        add_action('init', function () use ($posttypes, $taxonomies, $css, $js, $templates_custom) {
+        add_action('init', function () use ($posttypes, $taxonomies, $router) {
             $posttypes->custom_post_types();
             $taxonomies->custom_taxonomy();
-            $templates = new Templates(
-                $css,
-                $js,
-            );
-            $router = new Router(
-                $this->pages,
-                $posttypes,
-                $taxonomies,
-                $templates,
-                $templates_custom
-            );
             $router->load_page();
             $router->react_rewrite_rules();
             new Shortcodes;
         });
-
-        // add_action('wp_head', function () {
-        //     (new SocialBar)->load_css();
-        //     (new CSS)->load_social_bar_css();
-        // });
 
         // add_action('customize_register', function ($wp_customize) {
         //     (new Customizer)->register_customizer_panel($wp_customize);
@@ -105,14 +100,15 @@ class SEVEN_TECH_Schedule
         //     (new Shadow)->seven_tech_shadow_section($wp_customize);
         //     (new SocialBar)->seven_tech_social_bar_section($wp_customize);
         // });
-
-        // $this->roles = new Roles;
-
-        add_action('update_option_wp_user_roles', [$this->roles, 'update_roles'], 10, 2);
-        add_action('add_user_role', [$this->roles, 'update_user_roles'], 10, 2);
     }
 
     function activate()
+    {
+        $this->router->react_rewrite_rules();
+        $this->pages->add_pages();
+    }
+
+    function deactivate()
     {
         flush_rewrite_rules();
     }
@@ -137,6 +133,6 @@ class SEVEN_TECH_Schedule
     }
 }
 
-$seven_tech = new SEVEN_TECH_Schedule();
-register_activation_hook(__FILE__, [$seven_tech, 'activate']);
-// register_deactivation_hook(__FILE__, array($thfw_users, 'deactivate'));
+$seven_tech_schedule = new SEVEN_TECH_Schedule();
+register_activation_hook(__FILE__, [$seven_tech_schedule, 'activate']);
+register_deactivation_hook(__FILE__, array($seven_tech_schedule, 'deactivate'));

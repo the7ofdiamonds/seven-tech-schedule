@@ -4,11 +4,11 @@ namespace SEVEN_TECH\Schedule\Post_Types;
 
 class Post_Types
 {
-    public $post_types;
+    public $post_types_list;
 
     public function __construct()
     {
-        $this->post_types = [
+        $this->post_types_list = [
             [
                 'name' => 'schedule',
                 'menu_icon' => '',
@@ -26,8 +26,8 @@ class Post_Types
 
     function custom_post_types()
     {
-        if (is_array($this->post_types) && count($this->post_types) > 0) {
-            foreach ($this->post_types as $post_type) {
+        if (is_array($this->post_types_list) && count($this->post_types_list) > 0) {
+            foreach ($this->post_types_list as $post_type) {
                 $labels = array(
                     'name' => $post_type['title'],
                     'singular_name' => $post_type['singular'],

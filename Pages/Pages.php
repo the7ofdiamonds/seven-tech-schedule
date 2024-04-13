@@ -37,12 +37,6 @@ class Pages
             ]
         ];
 
-        $this->page_titles = [
-            ...$this->custom_pages_list,
-            ...$this->protected_pages_list,
-            ...$this->pages_list,
-        ];
-
         $this->pages = [];
     }
 

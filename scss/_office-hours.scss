@@ -1,21 +1,20 @@
 .office-hours-card.card {
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 
-  table {
-    border-spacing: 0.375em;
-    border-collapse: collapse;
+  span {
+    display: flex;
+    justify-content: start;
+    width: 100%;
 
-    thead {
-      background-color: black;
-      color: white;
-    }
+    h4 {
+      padding: 0.5rem;
 
-    tr {
-      td {
-        h4 {
-          letter-spacing: normal;
-          padding: 0.5rem;
-        }
+      &.day {
+        background-color: black;
+        color: white;
+        width: 5rem;
       }
     }
   }

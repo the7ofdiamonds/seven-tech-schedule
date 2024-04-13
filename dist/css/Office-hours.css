@@ -1,1 +1,1 @@
-.office-hours-card.card{padding:0}.office-hours-card.card table{border-spacing:.375em;border-collapse:collapse}.office-hours-card.card table thead{background-color:#000;color:#fff}.office-hours-card.card table tr td h4{letter-spacing:normal;padding:.5rem}
+.office-hours-card.card{display:flex;align-items:center;justify-content:start}.office-hours-card.card span{display:flex;justify-content:start;width:100%}.office-hours-card.card span h4{padding:.5rem}.office-hours-card.card span h4.day{background-color:#000;color:#fff;width:5rem}

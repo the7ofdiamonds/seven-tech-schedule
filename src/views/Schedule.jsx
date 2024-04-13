@@ -292,34 +292,16 @@ function ScheduleComponent() {
 
       {officeHours && officeHours.length > 0 ? (
         <div className="office-hours-card card">
-          <table>
-            <thead>
-              <tr>
-                <th>SUN</th>
-                <th>MON</th>
-                <th>TUE</th>
-                <th>WED</th>
-                <th>THU</th>
-                <th>FRI</th>
-                <th>SAT</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {officeHours.map((hours) => (
-                  <>
-                    <td key={hours.day}>
-                      <h4>
-                        {hours.start && hours.end
-                          ? `${hours.start} - ${hours.end}`
-                          : 'CLOSED'}
-                      </h4>
-                    </td>
-                  </>
-                ))}
-              </tr>
-            </tbody>
-          </table>
+          {officeHours.map((hours, index) => (
+            <span key={index}>
+              <h4 className="day">{hours.dayofweek}</h4>
+              <h4>
+                {hours.start && hours.end
+                  ? `${hours.start} - ${hours.end}`
+                  : 'CLOSED'}
+              </h4>
+            </span>
+          ))}
         </div>
       ) : (
         ''

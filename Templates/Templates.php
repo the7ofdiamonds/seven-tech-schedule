@@ -23,37 +23,58 @@ class Templates
     function get_front_page_template($frontpage_template, $sections)
     {
         if (is_front_page()) {
+
             foreach ($sections as $section) {
-                add_action('wp_head', function () use ($section) {
-                    $this->css->load_front_page_css($section);
-                });
-                add_action('wp_footer', function () use ($section) {
-                    $this->js->load_front_page_react($section);
-                });
+                $frontpage_css = $this->pluginDir . 'dist/css/' . $section . '.css';
+
+                if (file_exists($frontpage_css)) {
+                    add_action('wp_head', function () use ($section) {
+                        $this->css->load_front_page_css($section);
+                    });
+                }
+
+                $frontpage_js = $this->pluginDir . 'dist/js/' . $section . '.js';
+
+                if (file_exists($frontpage_js)) {
+                    add_action('wp_footer', function () use ($section) {
+                        $this->js->load_front_page_react($section);
+                    });
+                }
+
+                return $frontpage_template;
             }
 
             return $frontpage_template;
         }
-
-        return $frontpage_template;
     }
-
 
     function get_custom_page_template($template_include, $custom_page)
     {
-        $custom_template = $this->pluginDir . "Pages/page-{$custom_page['name']}.php";
 
-        if (file_exists($custom_template)) {
+        if (isset($custom_page['file_name'])) {
             $filename = $custom_page['file_name'];
+            $filename_css = $this->pluginDir . 'dist/css/' . $filename . '.css';
+            $filename_js = $this->pluginDir . 'dist/js/' . $filename . '.js';
 
-            add_action('wp_head', function () use ($filename) {
-                $this->css->load_pages_css($filename);
-            });
-            add_action('wp_footer', function () use ($filename) {
-                $this->js->load_pages_react($filename);
-            });
+            if (file_exists($filename_css)) {
+                add_action('wp_head', function () use ($filename) {
+                    $this->css->load_pages_css($filename);
+                });
+            }
 
-            return $custom_template;
+            if (file_exists($filename_js)) {
+                add_action('wp_footer', function () use ($filename) {
+                    $this->js->load_pages_react($filename);
+                });
+            }
+        }
+
+        if (isset($custom_page['page_name'])) {
+            $custom_template = $this->pluginDir . "Pages/page-{$custom_page['page_name']}.php";
+
+            if (file_exists($custom_template)) {
+                return $custom_template;
+            }
         }
 
         return $template_include;
@@ -83,21 +104,26 @@ class Templates
 
     function get_page_template($template_include, $page)
     {
-        $template = $this->pluginDir . 'Pages/page.php';;
+        $filename = $page['file_name'];
+        $filename_css = $this->pluginDir . 'dist/css/' . $filename . '.css';
+        $filename_js = $this->pluginDir . 'dist/js/' . $filename .'.js';
 
-        if (file_exists($template)) {
-            $filename = $page['file_name'];
-
+        if (file_exists($filename_css)) {
             add_action('wp_head', function () use ($filename) {
                 $this->css->load_pages_css($filename);
             });
+        }
+
+        if (file_exists($filename_js)) {
             add_action('wp_footer', function () use ($filename) {
                 $this->js->load_pages_react($filename);
             });
+        }
 
+        $template = $this->pluginDir . 'Pages/page.php';;
+
+        if (file_exists($template)) {
             return $template;
-        } else {
-            error_log('Page Template does not exist.');
         }
 
         return $template_include;

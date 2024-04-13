@@ -5,8 +5,8 @@ namespace SEVEN_TECH\Schedule\Pages;
 class Pages
 {
     public $front_page_react;
-    public $custom_pages_list;
-    public $protected_pages_list;
+    public $custom_pages;
+    public $protected_pages;
     public $pages_list;
     public $pages;
     public $page_titles;
@@ -17,35 +17,33 @@ class Pages
             'Schedule',
         ];
 
-        $this->custom_pages_list = [
+        $this->custom_pages = [
             [
                 'file_name' => 'Schedule',
                 'url' => 'schedule',
                 'regex' => '#^/schedule#',
-                'name' => 'schedule'
-            ]
-        ];
-
-        $this->protected_pages_list = [];
-
-        $this->pages_list = [
+                'page_name' => 'schedule'
+            ],
             [
                 'file_name' => 'Schedule',
                 'url' => 'about',
-                'regex' => '#^/about#',
-                'name' => 'schedule'
+                'regex' => '#^/about#'
             ]
         ];
 
+        $this->protected_pages = [];
+
         $this->pages = [];
+
+        $this->pages_list = [];
     }
 
     function add_pages()
     {
-        if (!empty($this->pages)) {
+        if (!empty($this->pages_list)) {
             global $wpdb;
 
-            foreach ($this->pages as $page) {
+            foreach ($this->pages_list as $page) {
                 if (!empty($page['title'])) {
                     $page_exists = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type = 'page'", $page['title']));
 

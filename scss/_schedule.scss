@@ -2,56 +2,62 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+}
 
-  .date-select.card,
-  .time-select.card,
-  .summary-select.card,
-  .description-select.card,
-  .communication-select.card,
-  .attendees-select.card,
-  .additional-attendee.card {
-    padding: 0;
-    gap: unset;
-    label {
-      background-color: var(--orb-color-primary);
-      color: var(--orb-color-secondary);
-      padding: 0.25em;
-      margin: 0;
-      width: 100%;
-    }
-  }
+.date-select.card,
+.time-select.card,
+.summary-select.card,
+.description-select.card,
+.communication-select.card,
+.attendees-select.card,
+.additional-attendee.card {
+  padding: 0;
+  gap: unset;
 
-  .attendees-select.card,
-  .additional-attendee.card {
-    .attendee {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-items: center;
-      h4 {
-        padding: 0.5em;
-      }
-      button {
-        margin: 0 0.25em 0;
-        h4 {
-          padding: 0.25em;
-        }
-      }
-      input {
-        margin: 0.5em;
-      }
-    }
+  label {
+    background-color: var(--orb-color-primary);
+    color: var(--orb-color-secondary);
+    padding: 0.25em;
+    margin: 0;
+    width: 100%;
   }
-  
-  .additional-attendee.card {
-    display: none;
-  }
+}
 
-  .additional-attendee.card.view {
+.attendees-select.card,
+.additional-attendee.card {
+  .attendee {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+
+    h4 {
+      padding: 0.5em;
+    }
+
+    button {
+      margin: 0 0.25em 0;
+
+      h4 {
+        padding: 0.25em;
+      }
+    }
+
+    input {
+      margin: 0.5em;
+    }
   }
+}
+
+.additional-attendee.card {
+  display: none;
+}
+
+.additional-attendee.card.view {
+  display: flex;
 }
 
 .schedule-select {

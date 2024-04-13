@@ -76,13 +76,11 @@ class SEVEN_TECH_Schedule
             $css,
             $js,
         );
-        $templates_custom = new TemplatesCustom;
         $router = new Router(
             $pages,
             $posttypes,
             $taxonomies,
-            $templates,
-            $templates_custom
+            $templates
         );
 
         add_action('init', function () use ($posttypes, $taxonomies, $router) {
@@ -105,8 +103,7 @@ class SEVEN_TECH_Schedule
             $pages,
             $posttypes,
             $taxonomies,
-            $templates,
-            $templates_custom
+            $templates
         );
         $this->pages = new Pages;
     }

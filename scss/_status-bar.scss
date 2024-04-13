@@ -1,0 +1,47 @@
+.status-bar.card {
+  background-color: var(--seven-tech-schedule-color-secondary);
+  span {
+    color: var(--seven-tech-schedule-color-primary);
+
+    h4 {
+      padding: 0.5em;
+      letter-spacing: unset;
+    }
+  }
+
+  &.info {
+    background-color: var(--seven-tech-schedule-color-info);
+    span {
+      h4 {
+        color: var(--seven-tech-schedule-color-info-text);
+      }
+    }
+  }
+
+  &.caution {
+    background-color: var(--seven-tech-schedule-color-caution);
+    span {
+      h4 {
+        color: var(--seven-tech-schedule-color-caution-text);
+      }
+    }
+  }
+
+  &.error {
+    background-color: var(--seven-tech-schedule-color-error);
+    span {
+      h4 {
+        color: var(--seven-tech-schedule-color-error-text);
+      }
+    }
+  }
+
+  &.success {
+    background-color: var(--seven-tech-schedule-color-success);
+    span {
+      h4 {
+        color: var(--seven-tech-schedule-color-success-text);
+      }
+    }
+  }
+}

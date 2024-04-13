@@ -4,9 +4,11 @@ namespace SEVEN_TECH\Schedule\CSS;
 
 use Exception;
 
-// use SEVEN_TECH\CSS\Customizer\BorderRadius;
-// use SEVEN_TECH\CSS\Customizer\Color;
-// use SEVEN_TECH\CSS\Customizer\Shadow;
+use SEVEN_TECH\Schedule\CSS\Customizer\BorderRadius;
+use SEVEN_TECH\Schedule\CSS\Customizer\Color;
+use SEVEN_TECH\Schedule\CSS\Customizer\Shadow;
+use SEVEN_TECH\Schedule\CSS\Customizer\StatusBar;
+use SEVEN_TECH\Schedule\CSS\Customizer\Table;
 
 class CSS
 {
@@ -26,16 +28,19 @@ class CSS
         $this->cssFolderPathURL = $this->dirURL . 'dist/css/';
     }
 
-    // function load_customization_css()
-    // {
-    //     (new BorderRadius)->load_css();
-    //     (new Color)->load_css();
-    //     (new Shadow)->load_css();
-    // }
+    function load_customization_css()
+    {
+        (new BorderRadius)->load_css();
+        (new Color)->load_css();
+        (new Shadow)->load_css();
+        (new StatusBar)->load_css();
+        (new Table)->load_css();
+    }
 
     function load_index_css()
     {
         try {
+            $this->load_customization_css();
             $filename = 'index.css';
             $indexPath = $this->cssFolderPath . $filename;
             $indexPathURL = $this->cssFolderPathURL . $filename;
@@ -60,7 +65,6 @@ class CSS
     function load_front_page_css($section)
     {
         try {
-            // $this->load_customization_css();
             $this->load_index_css();
 
             if (!empty($section)) {
@@ -91,7 +95,6 @@ class CSS
     {
         try {
             if (!empty($page)) {
-                // $this->load_customization_css();
                 $this->load_index_css();
 
                 $filename = $page . '.css';

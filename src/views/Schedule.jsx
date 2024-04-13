@@ -64,7 +64,6 @@ function ScheduleComponent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Office Hours
   useEffect(() => {
     dispatch(getOfficeHours());
   }, [dispatch]);
